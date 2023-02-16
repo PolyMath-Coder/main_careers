@@ -32,9 +32,9 @@ const getProduct = async (id: string) => {
   }
 };
 
-const updateProduct = async (id: any, options: object) => {
+const updateProduct = async (id: any, data: object) => {
   try {
-    return await Product.findByIdAndUpdate(id, { options }, { new: true });
+    return await Product.findByIdAndUpdate(id, data, { new: true });
   } catch (error) {
     throw new Error('Unable to update product...');
   }

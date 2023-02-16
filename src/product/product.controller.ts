@@ -30,23 +30,24 @@ const getProducts = catchAsync(async (req: Request, res: Response) => {
     pageNumberInFigure,
     limitPerPageInFigure
   );
-  res
-    .status(201)
-    .json({
-      status: 'success',
-      message: 'All products now retrieved...',
-      data,
-    });
+  res.status(201).json({
+    status: 'success',
+    message: 'All products now retrieved...',
+    data,
+  });
 });
 const updateProduct = catchAsync(async (req: Request, res: Response) => {
-  const data = await productService.updateProduct(req.query.id, req.body);
+  const data = await productService.updateProduct(
+    req.query.productId,
+    req.body
+  );
   res
     .status(201)
-    .json({ status: true, message: 'Product successfully updated...' });
+    .json({ status: true, message: 'Product successfully updated...', data });
 });
 
 const deleteProduct = catchAsync(async (req: Request, res: Response) => {
-  const data = await productService.deleteProduct(req.params._id);
+  const data = await productService.deleteProduct(req.params.id);
   res.status(201).json({
     status: true,
     message: `The product with the id ${req.params.id} was just deleted...`,

@@ -4,14 +4,16 @@ import {
   getProduct,
   getProducts,
   updateProduct,
+  deleteProduct,
 } from './product.controller';
-// const productRouter = express.Router();
+
 const productRouter: Router = Router();
 
 productRouter.post('/create', createProduct);
 productRouter.get('/all/products', getProducts);
 
 productRouter.get('/:_id', getProduct);
-productRouter.put('/', updateProduct);
+productRouter.put('/update', updateProduct);
+productRouter.delete('/:id', deleteProduct);
 
 export default productRouter;
